@@ -1,0 +1,10 @@
+br\com\gubee\domain\usecase\CreateProductUseCase.class
+br\com\gubee\domain\usecase\interfaces\CreateProduct.class
+br\com\gubee\domain\usecase\interfaces\FindProduct.class
+br\com\gubee\domain\usecase\DeleteProductUseCase.class
+br\com\gubee\domain\model\Product.class
+br\com\gubee\domain\usecase\interfaces\UpdateProduct.class
+br\com\gubee\domain\usecase\UpdateProductUsaCase.class
+br\com\gubee\domain\repositories\ProductRepository.class
+br\com\gubee\domain\usecase\interfaces\DeleteProduct.class
+br\com\gubee\domain\usecase\FindProductUseCase.class
