@@ -1,0 +1,146 @@
+> Exibir listagem dos produtos oferecidos pela Gubee
+
+filtrar por Tecnologia e mercado alvo;
+
+{
+    "productName": "Gubee Integrador",
+    "description": "Ferramenta de integração para marketplaces",
+    "targetMarket": 
+	[
+      "Ecommerce",
+      "ERP",
+      "Lojista que não desejam possuir ecommerce"
+	],
+    "stack": [
+      "Java 10",
+      "Kotlin",
+      "Kafka",
+      "Event Stream",
+      "Redis",
+      "MongoDB"
+    ]
+  }
+
+--------------------------
+
+module > resource
+
+resource.controllers
+@RestController
+class ProductResource {
+	private final CreateProduct createProduct;
+	private final FindProduct findProduct;
+	private final UpdateProduct updateProduct;
+	private final DeleteProduct deleteProduct;
+
+}
+resource.dto
+record ProductDTO (Long id, String productName, String description, List<String> targetMarket, List<String> stack) {
+}
+
+--------------------------
+
+module > domain
+
+domain.usecase.interfaces
+
+interface CreateProduct {}
+interface FindProduct {}
+interface UpdateProduct {}
+interface DeleteProduct {}
+
+domain.usecase
+
+class CreateProductUsecase implements CreateProduct {}
+class FindProductUseCase implements FindProduct {}
+class UpdateProductUseCase implements UpdateProduct {}
+class DeleteProductUseCase implements DeleteProduct {}
+
+
+domain.model
+class Product {
+	private Long id;
+	private String productName;
+	private String description;
+	private List<String> targetMarket;
+	private List<String> stack;
+}
+
+
+domain.repositories
+interface ProductRepository {}
+
+--------------------------
+
+module > infra
+
+infra.persistence.repositories
+class ProductRepositoryImpl implements ProductRepository {}
+
+infra.persistence.entities
+class ProducEntityt {
+	
+	@Id
+	private Long id;
+	private String productName;
+	private String description;
+	private List<String> targetMarket;
+	private List<String> stack;
+}
+
+infra.persistence
+interface InMemoryRepository extends JpaRepository<Long, ProductEntity> {}
+
+infra.config
+class SpringContextConfiguration {}
+
+--------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
