@@ -11,10 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/gubee/product")
@@ -28,7 +25,7 @@ public class ProductResource {
     private final ProductAssembler assembler;
 
     @PostMapping("/create")
-    public ResponseEntity<ProductDTO> insert(@Validated ProductDTO productRequest) {
+    public ResponseEntity<ProductDTO> insert(@RequestBody @Validated ProductDTO productRequest) {
         ProductDTO productDTO = assembler.toDtoProduct(createProduct.createProduct(assembler.toDomainProduct(productRequest)));
         return ResponseEntity.ok().body(productDTO);
     }
