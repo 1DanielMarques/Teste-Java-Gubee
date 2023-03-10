@@ -4,28 +4,39 @@ import br.com.gubee.domain.usecase.interfaces.CreateProduct;
 import br.com.gubee.domain.usecase.interfaces.DeleteProduct;
 import br.com.gubee.domain.usecase.interfaces.FindProduct;
 import br.com.gubee.domain.usecase.interfaces.UpdateProduct;
+import br.com.gubee.resource.config.SpringContextConfiguration;
+import br.com.gubee.resource.assembler.ProductAssembler;
 import br.com.gubee.resource.dto.ProductDTO;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping(value = "/gubee/product")
 @RequiredArgsConstructor
-@RequestMapping("/gubee/product")
+@Import(SpringContextConfiguration.class)
 public class ProductResource {
     private final CreateProduct createProduct;
     private final FindProduct findProduct;
     private final UpdateProduct updateProduct;
     private final DeleteProduct deleteProduct;
+    private final ProductAssembler assembler;
 
     @PostMapping("/create")
-    public ResponseEntity<ProductDTO> insert(@Validated ProductDTO productDTO){
-
-        return null;
+    public ResponseEntity<ProductDTO> insert(@Validated ProductDTO productRequest) {
+        ProductDTO productDTO = assembler.toDtoProduct(createProduct.createProduct(assembler.toDomainProduct(productRequest)));
+        return ResponseEntity.ok().body(productDTO);
     }
 
+    @GetMapping
+    public String teste() {
+        return "Teste";
+    }
 
 }
+
