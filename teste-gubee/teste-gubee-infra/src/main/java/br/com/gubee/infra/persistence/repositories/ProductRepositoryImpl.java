@@ -5,6 +5,8 @@ import br.com.gubee.domain.repositories.ProductRepository;
 import br.com.gubee.infra.persistence.entities.ProductEntity;
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 public class ProductRepositoryImpl implements ProductRepository {
 
@@ -16,11 +18,16 @@ public class ProductRepositoryImpl implements ProductRepository {
                 .productName(product.getProductName())
                 .description(product.getDescription())
                 .targetMarket(product.getTargetMarket())
-                .stack(product.getStack()).build());
+                .stack(product.getStack()).build()).;
         return Product.builder()
                 .productName(entity.getProductName())
                 .description(entity.getDescription())
                 .targetMarket(entity.getTargetMarket())
                 .stack(entity.getStack()).build();
+    }
+
+    @Override
+    public List<Product> findAll() {
+        return null;
     }
 }

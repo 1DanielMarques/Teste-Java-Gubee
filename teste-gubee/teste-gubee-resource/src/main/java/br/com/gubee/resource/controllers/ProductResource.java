@@ -4,8 +4,8 @@ import br.com.gubee.domain.usecase.interfaces.CreateProduct;
 import br.com.gubee.domain.usecase.interfaces.DeleteProduct;
 import br.com.gubee.domain.usecase.interfaces.FindProduct;
 import br.com.gubee.domain.usecase.interfaces.UpdateProduct;
-import br.com.gubee.resource.config.SpringContextConfiguration;
 import br.com.gubee.resource.assembler.ProductAssembler;
+import br.com.gubee.resource.config.SpringContextConfiguration;
 import br.com.gubee.resource.dto.ProductDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Import;
@@ -30,9 +30,10 @@ public class ProductResource {
         return ResponseEntity.ok().body(productDTO);
     }
 
-    @GetMapping
-    public String teste() {
-        return "Teste";
+    @GetMapping("find")
+    public ResponseEntity<ProductDTO> findAll(){
+
+        return null;
     }
 
 }
