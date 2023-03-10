@@ -18,7 +18,7 @@ public class ProductRepositoryImpl implements ProductRepository {
                 .productName(product.getProductName())
                 .description(product.getDescription())
                 .targetMarket(product.getTargetMarket())
-                .stack(product.getStack()).build()).;
+                .stack(product.getStack()).build());
         return Product.builder()
                 .productName(entity.getProductName())
                 .description(entity.getDescription())
